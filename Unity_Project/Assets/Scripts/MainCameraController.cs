@@ -15,6 +15,6 @@ public class MainCameraController : MonoBehaviour
 	void Update ()
 	{
 	    transform.LookAt(Rosetta.transform);
-        transform.RotateAround(Rosetta.transform.position, Vector3.up, 20 * Time.deltaTime);
+        transform.RotateAround(Rosetta.transform.position, Vector3.up, 15 * Time.deltaTime);
 	}
 }
