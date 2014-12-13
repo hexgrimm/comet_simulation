@@ -35,6 +35,8 @@ public class VideoScreenComponent : MonoBehaviour
         return mov.Duration;
     }
 
+
+    //http://www.youtube.com/watch?v=rEslUpel6s4 = rosetta start
     public void StopVideo()
     {
         var mov = renderer.material.mainTexture as MovieTexture;
