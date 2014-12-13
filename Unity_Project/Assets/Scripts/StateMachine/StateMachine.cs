@@ -8,6 +8,11 @@ namespace Assets.Scripts.StateMachine
 {
     public static class StateMachine
     {
+        private static IState currentState;
+        private static IState[] statesArray = new IState[]
+        {
+            new StartState(), new WakeUp(), new SleepRosetta(), new ManeureState(), new Filae(), new Conclusion()
+        };
         static StateMachine()
         {
             GlobalInputController.Instance.RegisterOnPressedBUttonEvent(OnPressedKeys);
@@ -15,7 +20,18 @@ namespace Assets.Scripts.StateMachine
 
         private static void OnPressedKeys(string key)
         {
-            
+            foreach (var state in statesArray)
+            {
+                if (state.KeyInvoking == key)
+                {
+                    if (currentState != null)
+                    {
+                        currentState.Hide();
+                        currentState = state;
+                    }
+                    state.Init();
+                }
+            }
         }
     }
 }

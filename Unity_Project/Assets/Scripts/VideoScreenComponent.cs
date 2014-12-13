@@ -10,9 +10,16 @@ public class VideoScreenComponent : MonoBehaviour
     public Material VideoFileWakeUpRosetta2;
     public Material Randevou;
     public Material FilieSending;
-	// Use this for initialization
+
     public static VideoScreenComponent Instance { get; set; }
     private static VideoScreenComponent instance;
+
+    public MovieTexture Start;
+    public MovieTexture Maneures;
+    public MovieTexture LuteciaMeet;
+    public MovieTexture WakeUpRosetta;
+    public MovieTexture FilaeEnter;
+    public MovieTexture EndPresentation;
 
     private void Awake()
     {
@@ -20,11 +27,43 @@ public class VideoScreenComponent : MonoBehaviour
     }
 
     [ContextMenu("Play")]
-    public void PlayMaterialFile()
+    public float PlayMaterialFile(MovieTexture mov)
     {
-        
-        var mov = renderer.material.mainTexture as MovieTexture;
+        renderer.material.mainTexture = mov;
         mov.Stop();
         mov.Play();
+        return mov.Duration;
+    }
+
+    public void StopVideo()
+    {
+        var mov = renderer.material.mainTexture as MovieTexture;
+        mov.Stop();
+    }
+
+    public void PauseVideo()
+    {
+        var mov = renderer.material.mainTexture as MovieTexture;
+        mov.Pause();
+    }
+
+    public void Hide()
+    {
+        StartCoroutine(HidePanel());
+    }
+
+    public void Show()
+    {
+        StartCoroutine(ShowPanel());
+    }
+
+    private IEnumerator HidePanel()
+    {
+        
+    }
+
+    private IEnumerator ShowPanel()
+    {
+
     }
 }

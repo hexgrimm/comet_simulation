@@ -5,22 +5,22 @@ using System.Text;
 
 namespace Assets.Scripts.StateMachine.States
 {
-    public class StartState: IState
+    public class SleepRosetta : IState
     {
         private bool isPaused = false;
         string IState.KeyInvoking
         {
-            get { return "1"; }
+            get { return "3"; }
         }
-
         void IState.Init()
         {
             GlobalEventListener.Instance.ReturnToDefaultState();
             ///TODO поставить камеру
-            /// поставить землю
+            /// 
             /// поставить розетту
             /// запустить движение розетты
             /// включить видео на экране
+            /// дождаться конца видео и начать показывать разные планеты
 
         }
 

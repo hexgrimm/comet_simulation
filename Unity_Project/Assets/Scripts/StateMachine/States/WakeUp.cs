@@ -5,19 +5,19 @@ using System.Text;
 
 namespace Assets.Scripts.StateMachine.States
 {
-    public class StartState: IState
+    public class WakeUp : IState
     {
         private bool isPaused = false;
         string IState.KeyInvoking
         {
-            get { return "1"; }
+            get { return "4"; }
         }
 
         void IState.Init()
         {
             GlobalEventListener.Instance.ReturnToDefaultState();
             ///TODO поставить камеру
-            /// поставить землю
+            /// 
             /// поставить розетту
             /// запустить движение розетты
             /// включить видео на экране
@@ -43,8 +43,8 @@ namespace Assets.Scripts.StateMachine.States
 
         void IState.Hide()
         {
-            VideoScreenComponent.Instance.StopVideo();
             VideoScreenComponent.Instance.Show();
+            VideoScreenComponent.Instance.StopVideo();
         }
     }
 }

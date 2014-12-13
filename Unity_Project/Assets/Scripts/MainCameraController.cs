@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 using System.Collections;
 
 [ExecuteInEditMode]
@@ -6,15 +7,29 @@ public class MainCameraController : MonoBehaviour
 {
 
     public GameObject Rosetta;
-	// Use this for initialization
-	void Start () {
+
+    private void Awake()
+    {
+        GlobalEventListener.Instance.ReturnObjectsToDefaultAction += ResetPosAndRot;
+    }
+
+    private void OnDestroy()
+    {
+        GlobalEventListener.Instance.ReturnObjectsToDefaultAction -= ResetPosAndRot;
+    }
+	void Start () 
+    {
 	
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
 	    transform.LookAt(Rosetta.transform);
-        transform.RotateAround(Rosetta.transform.position, Vector3.up, 15 * Time.deltaTime);
+        transform.RotateAround(Rosetta.transform.position, Vector3.up, 5 * Time.deltaTime);
 	}
+
+    public void ResetPosAndRot()
+    {
+        
+    }
 }

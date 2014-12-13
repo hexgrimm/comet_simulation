@@ -191,8 +191,14 @@
     <Compile Include="Assets\Scripts\MainController\GlobalInputController.cs" />
     <Compile Include="Assets\Scripts\MainController\IInputController.cs" />
     <Compile Include="Assets\Scripts\StateMachine\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\Conclusion.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\Filae.cs" />
     <Compile Include="Assets\Scripts\StateMachine\States\IState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\ManeureState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\SleepRosetta.cs" />
     <Compile Include="Assets\Scripts\StateMachine\States\StartState.cs" />
+    <Compile Include="Assets\Scripts\StateMachine\States\WakeUp.cs" />
+    <Compile Include="Assets\Scripts\ToDefaultReturnerComponent.cs" />
     <Compile Include="Assets\Scripts\VideoScreenComponent.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,23 +5,22 @@ using System.Text;
 
 namespace Assets.Scripts.StateMachine.States
 {
-    public class StartState: IState
+    public class Conclusion : IState
     {
         private bool isPaused = false;
         string IState.KeyInvoking
         {
-            get { return "1"; }
+            get { return "6"; }
         }
-
         void IState.Init()
         {
             GlobalEventListener.Instance.ReturnToDefaultState();
             ///TODO поставить камеру
-            /// поставить землю
+            /// поставить планеты
             /// поставить розетту
             /// запустить движение розетты
             /// включить видео на экране
-
+            /// дождаться конца видео и начать показывать разные планеты
         }
 
         void IState.Pause()
@@ -43,8 +42,8 @@ namespace Assets.Scripts.StateMachine.States
 
         void IState.Hide()
         {
-            VideoScreenComponent.Instance.StopVideo();
             VideoScreenComponent.Instance.Show();
+            VideoScreenComponent.Instance.StopVideo();
         }
     }
 }
