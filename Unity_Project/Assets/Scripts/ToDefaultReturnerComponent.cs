@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -11,12 +12,12 @@ namespace Assets.Scripts
         {
             GlobalEventListener.Instance.ReturnObjectsToDefaultAction += SetDefaultPosRot;
         }
-        public void SetDefaultPosRot()
+        public virtual void SetDefaultPosRot()
         {
 
         }
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
             GlobalEventListener.Instance.ReturnObjectsToDefaultAction -= SetDefaultPosRot;
         }

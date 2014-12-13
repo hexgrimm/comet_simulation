@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.StateMachine.States
 {
@@ -16,7 +17,13 @@ namespace Assets.Scripts.StateMachine.States
         void IState.Init()
         {
             GlobalEventListener.Instance.ReturnToDefaultState();
-            ///TODO поставить камеру
+            MainCameraController.Instance.gameObject.transform.position = MainCameraController.Instance.defaultCamPos1;
+            MainCameraController.Instance.gameObject.transform.rotation = Quaternion.Euler(MainCameraController.Instance.defaultCamRotation1);
+
+            MainCameraController.Instance.gameObject.transform.position = EarthComponent.Instance.defaultEarPos1;
+            MainCameraController.Instance.gameObject.transform.rotation = Quaternion.Euler(EarthComponent.Instance.defaultEarRotation1);
+
+            
             /// поставить землю
             /// поставить розетту
             /// запустить движение розетты

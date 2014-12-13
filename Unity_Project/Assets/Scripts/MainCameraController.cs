@@ -7,9 +7,14 @@ public class MainCameraController : MonoBehaviour
 {
 
     public GameObject Rosetta;
+    public static MainCameraController Instance;
+
+    public Vector3 defaultCamPos1;
+    public Vector3 defaultCamRotation1;
 
     private void Awake()
     {
+        Instance = this;
         GlobalEventListener.Instance.ReturnObjectsToDefaultAction += ResetPosAndRot;
     }
 

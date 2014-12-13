@@ -3,27 +3,22 @@ using System.Collections;
 
 public class VideoScreenComponent : MonoBehaviour
 {
-    public Material StartVideo;
-    public Material TrajectoryVideo;
-    public Material VideoFileLutecia;
-    public Material VideoFileWakeUpRosetta1;
-    public Material VideoFileWakeUpRosetta2;
-    public Material Randevou;
-    public Material FilieSending;
+    public MovieTexture StartVideo;
+    public MovieTexture TrajectoryVideo;
+    public MovieTexture VideoFileLutecia;
+    public MovieTexture VideoFileWakeUpRosetta1;
+    public MovieTexture VideoFileWakeUpRosetta2;
+    public MovieTexture Randevou;
+    public MovieTexture FilieSending;
+
+    public Vector3 HiddenPos;
+    public Vector3 ShownPos;
 
     public static VideoScreenComponent Instance { get; set; }
-    private static VideoScreenComponent instance;
-
-    public MovieTexture Start;
-    public MovieTexture Maneures;
-    public MovieTexture LuteciaMeet;
-    public MovieTexture WakeUpRosetta;
-    public MovieTexture FilaeEnter;
-    public MovieTexture EndPresentation;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     [ContextMenu("Play")]
@@ -32,15 +27,14 @@ public class VideoScreenComponent : MonoBehaviour
         renderer.material.mainTexture = mov;
         mov.Stop();
         mov.Play();
-        return mov.Duration;
+        return mov.duration;
     }
 
-
-    //http://www.youtube.com/watch?v=rEslUpel6s4 = rosetta start
     public void StopVideo()
     {
         var mov = renderer.material.mainTexture as MovieTexture;
         mov.Stop();
+        StopAllCoroutines();
     }
 
     public void PauseVideo()
@@ -61,11 +55,11 @@ public class VideoScreenComponent : MonoBehaviour
 
     private IEnumerator HidePanel()
     {
-        
+        transform.localPosition = Vector3.Lerp(transform.localPosition, HiddenPos, Time.deltaTime);
     }
 
     private IEnumerator ShowPanel()
     {
-
+        transform.localPosition = Vector3.Lerp(transform.localPosition, ShownPos, Time.deltaTime);
     }
 }
